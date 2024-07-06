@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music_Player</title>
+    <link rel="stylesheet" href="music.css">
+</head>
+<body>
+    <div class="container">
+        <div class="view">
+            <div class="header">
+                <h1>Inthandham</h1>
+                <img src="../photos/heart.png" alt="like">
+            </div>
+            <div class="imgs">
+                <img src="https://i.scdn.co/image/ab67616d0000b27385efa87a5eafe030b2495b7e" alt="img">
+                <div class="audio-player">
+                    <audio id="audio" src="../photos/Inthandham.mp3"></audio>
+                    <div class="controls">
+                        <div id="current-time">0:00</div>
+                        <input type="range" id="progress-bar" value="0" max="100">
+                        <div id="duration"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="controls1">
+            <img id="i1" src="../photos/player_shuffle.png" alt="shuffle">
+            <img id="i2" src="../photos/bckwd.png" alt="">
+            <img id="i3" src="../photos/music_play.png" alt="">
+            <img id="i4" src="../photos/frwd.png" alt="">
+            <img id="i5" src="../photos/repeat.png" alt="">
+        </div>
+    </div>
+    <script src="music.js"></script>
+</body>
+</html>

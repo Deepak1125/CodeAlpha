@@ -1,0 +1,75 @@
+.container{
+    height: 500px;
+    width: 500px;
+    margin: auto;
+    position: relative;
+    top: 60px;
+    border-radius: 16px;
+    border: 2px solid white;
+    background-color:#B87333;
+}
+.view{
+    height: 70%;
+}
+
+.header {
+    height: 15%;
+    border-bottom: 2px solid white;
+    background-color: salmon;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    text-align: center;
+}
+.header h1{
+    position: relative;
+    top: -18px;
+    display: inline;
+}
+.header img{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    right: 30px;
+    top: 5px;
+}
+.imgs {
+    height: 85%;
+    border-bottom: 2px solid white;
+    background: linear-gradient(to bottom,rgb(106, 90, 205),rgb(136, 139, 141));
+}
+.imgs img{
+    height: 250px;
+    width: 250px;
+    position: relative;
+    top: 5%;
+    left: 25%;
+}
+.controls1{
+    display: flex;
+    position: relative;
+    top: -5%;
+}
+.controls1 img{
+    position: relative;
+    top: 75px;
+    margin: auto;
+    height: 50px;
+    width: 50px;
+}
+.audio-player {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+.controls {
+    display: flex;
+    align-items: center;
+    position: relative;
+    left: 45px;
+    top: 30px;
+    transform: scale(1.2);
+}
+#progress-bar {
+    width: 300px;
+    cursor: pointer;
+}
