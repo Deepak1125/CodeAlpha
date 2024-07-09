@@ -8,12 +8,36 @@ let heart = document.querySelector(".header img");
 let forward = document.querySelector(".controls1 #i4");
 let backward = document.querySelector(".controls1 #i2");
 
-arr2 = ["Putene Prema", "Odiyamma", "Ninnila Ninnila", "Thee Thalapathy", "Inthandham"];
-arr3 = ["../photos/Puttene Prema.mp3", "../photos/Odiyamma.mp3", "../photos/Ninnila.mp3", "../photos/Thee Thalapathy.mp3", "../photos/Inthandham.mp3"];
-
+const songs = [
+    {
+        title: "Putene Prema",
+        audioSrc: "../photos/Puttene Prema.mp3",
+        imgSrc: "https://i.scdn.co/image/ab67616d0000b2731f702861ed523c43d172eae1"
+    },
+    {
+        title: "Odiyamma",
+        audioSrc: "../photos/Odiyamma.mp3",
+        imgSrc: "https://i.scdn.co/image/ab67616d0000b273d84e64d1b61248cc16dc5efd"
+    },
+    {
+        title: "Ninnila Ninnila",
+        audioSrc: "../photos/Ninnila.mp3",
+        imgSrc: "https://i.scdn.co/image/ab67616d0000b273dc3c4874fca4c0246bbbdb0e"
+    },
+    {
+        title: "Thee Thalapathy",
+        audioSrc: "../photos/Thee Thalapathy.mp3",
+        imgSrc: "https://i.scdn.co/image/ab67616d0000b2739d085e3c00e22bda745185ed"
+    },
+    {
+        title: "Inthandham",
+        audioSrc: "../photos/Inthandham.mp3",
+        imgSrc: "https://i.scdn.co/image/ab67616d0000b27385efa87a5eafe030b2495b7e"
+    }
+];
 function random() {
-    let random1 = Math.floor(Math.random() * arr1.length);
-    let id = arr1.indexOf(img.src);
+    let random1 = Math.floor(Math.random() * songs.length);
+    let id = songs.findIndex(song => song.imgSrc === img.src);
     if (random1 !== id) {
         return random1;
     } else {
@@ -27,27 +51,19 @@ function auto() {
     heart.src = "../photos/heart.png";
 }
 
-let arr1 = [
-    "https://i.scdn.co/image/ab67616d0000b2731f702861ed523c43d172eae1",
-    "https://i.scdn.co/image/ab67616d0000b273d84e64d1b61248cc16dc5efd",
-    "https://i.scdn.co/image/ab67616d0000b273dc3c4874fca4c0246bbbdb0e",
-    "https://i.scdn.co/image/ab67616d0000b2739d085e3c00e22bda745185ed",
-    "https://i.scdn.co/image/ab67616d0000b27385efa87a5eafe030b2495b7e"
-];
-
 function checksrc() {
     let currentSrc = img.getAttribute("src");
-    return arr1.indexOf(currentSrc);
+    return songs.findIndex(song => song.imgSrc === currentSrc);
 }
 
 function frwd() {
     if (repeat.src.includes("repeat_on.png")) {
         auto();
     } else {
-        let idx = (checksrc() + 1) % 5;
-        img.setAttribute("src", arr1[idx]);
-        audiosng.src = arr3[idx];
-        h1.textContent = arr2[idx];
+        let idx = (checksrc() + 1) % songs.length;
+        img.setAttribute("src", songs[idx].imgSrc);
+        audiosng.src = songs[idx].audioSrc;
+        h1.textContent = songs[idx].title;
         auto();
     }
 }
@@ -56,10 +72,10 @@ function bckwd() {
     if (repeat.src.includes("repeat_on.png")) {
         auto();
     } else {
-        let idx = (checksrc() - 1 + 5) % 5;
-        img.setAttribute("src", arr1[idx]);
-        audiosng.src = arr3[idx];
-        h1.textContent = arr2[idx];
+        let idx = (checksrc() - 1 + songs.length) % songs.length;
+        img.setAttribute("src", songs[idx].imgSrc);
+        audiosng.src = songs[idx].audioSrc;
+        h1.textContent = songs[idx].title;
         auto();
     }
 }
@@ -69,12 +85,9 @@ backward.addEventListener("click", bckwd);
 
 shuffle.addEventListener("click", () => {
     let a = random();
-    let x = arr1[a];
-    let y = arr3[a];
-    let z = arr2[a];
-    img.src = x;
-    audiosng.src = y;
-    h1.textContent = z;
+    img.src = songs[a].imgSrc;
+    audiosng.src = songs[a].audioSrc;
+    h1.textContent = songs[a].title;
     auto();
 });
 
