@@ -1,8 +1,9 @@
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;    
+    soverflow-x: hidden;
 }
 body {
-    background-image: url("../photos/portfolioimg1.avif");
+    background-image: url("../Photos/background.png");
     background-size: cover;
     color: white;
     margin: 0;
