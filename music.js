@@ -35,6 +35,8 @@ const songs = [
         imgSrc: "https://i.scdn.co/image/ab67616d0000b27385efa87a5eafe030b2495b7e"
     }
 ];
+
+
 function random() {
     let random1 = Math.floor(Math.random() * songs.length);
     let id = songs.findIndex(song => song.imgSrc === img.src);
@@ -122,33 +124,25 @@ heart.addEventListener("click", () => {
         heart.src = imgSrc1;
     }
 });
-
-const audio = document.getElementById('audio');
-const progressBar = document.getElementById('progress-bar');
-const currentTime = document.getElementById('current-time');
-const duration = document.getElementById('duration');
-
-function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-}
-
-audio.addEventListener('loadedmetadata', () => {
-    duration.textContent = formatTime(audio.duration);
-});
-
-audio.addEventListener('timeupdate', () => {
-    const progress = (audio.currentTime / audio.duration) * 100;
-    progressBar.value = progress;
-    currentTime.textContent = formatTime(audio.currentTime);
-});
-
-progressBar.addEventListener('input', () => {
-    const seekTime = (progressBar.value / 100) * audio.duration;
-    audio.currentTime = seekTime;
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    duration.textContent = formatTime(audio.duration);
+document.addEventListener("DOMContentLoaded", function() {
+    const audio = document.getElementById('audio');
+    const progressBar = document.getElementById('progress-bar');
+    const currentTimeElement = document.getElementById('current-time');
+    const durationElement = document.getElementById('duration');
+    audio.addEventListener('loadedmetadata', function() {
+        progressBar.max = audio.duration;
+        durationElement.textContent = formatTime(audio.duration);
+    });
+    audio.addEventListener('timeupdate', function() {
+        progressBar.value = audio.currentTime;
+        currentTimeElement.textContent = formatTime(audio.currentTime);
+    });
+    progressBar.addEventListener('input', function() {
+        audio.currentTime = progressBar.value;
+    });
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secondsRemaining = Math.floor(seconds % 60);
+        return `${minutes}:${secondsRemaining < 10 ? '0' : ''}${secondsRemaining}`;
+    }
 });
