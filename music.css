@@ -60,7 +60,10 @@
     display: flex;
     align-items: center;
     padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .controls {
     display: flex;
     align-items: center;
@@ -69,7 +72,35 @@
     top: 30px;
     transform: scale(1.2);
 }
+
 #progress-bar {
     width: 300px;
+    cursor: pointer;
+    appearance: none;
+    height: 8px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #4caf50 0%, #2196f3 100%);
+    outline: none;
+    margin: 0 10px;
+}
+
+#progress-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #2196f3;
+    cursor: pointer;
+}
+
+#progress-bar::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border: 2px solid #2196f3;
     cursor: pointer;
 }
